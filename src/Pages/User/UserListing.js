@@ -65,8 +65,8 @@ const UserListing = () => {
             )}
             <Grid container spacing={2} sx={{marginBottom: 3}}>
                 <Grid item xs={6} textAlign='left'>
-                    <Typography variant="h5"><strong>Users12345</strong></Typography>
-                    <Typography variant='body2'>Manage your user(s)11111</Typography>
+                    <Typography variant="h5"><strong>Users</strong></Typography>
+                    <Typography variant='body2'>Manage your user(s)6</Typography>
                 </Grid>
                 <Grid item xs={6} textAlign='right'>
                     <Button 
