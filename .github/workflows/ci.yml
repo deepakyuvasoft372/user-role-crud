@@ -1,17 +1,51 @@
-name: CI
+# name: CI
 
-on: [push]
+# on: [push]
+
+# jobs:
+#   build:
+
+#     runs-on: windows-latest
+    
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Run a one-line script
+#       run: echo Hello, world!
+#     - name: Run a multi-line script
+#       run: |
+#         echo Add other actions to build,
+#         echo test, and deploy your project.
+
+
+#         netlify token :- nfp_JTvYPGJJMTkoowT9FRAQW3Vvbjf5qrtB1478
+
+
+
+
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name if different
 
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: windows-latest
-    
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir=build
+        env:
+          NETLIFY_AUTH_TOKEN: nfp_JTvYPGJJMTkoowT9FRAQW3Vvbjf5qrtB1478
